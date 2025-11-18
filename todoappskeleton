@@ -1,0 +1,45 @@
+
+def show_menu(): 
+ """Prints available actions for user"""
+
+ print("list") 
+ print("add")
+ print("delete")
+ print("exit")
+show_menu() #shows menu
+tasks = [] #the list
+
+while True: #infinite loop for choosing actions 
+ 
+ choice = input("Choose your action: ")
+
+ if choice == "1": #list tasks with numbering
+   if not tasks:
+    print("no tasks")
+
+   else:
+    for i, item in enumerate(tasks,1): 
+     print(i,item)
+ 
+ elif choice == "2": #add a new task
+  new_task = input("Enter new task: ")
+  tasks.append(new_task)
+  print("Task added")
+ 
+ elif choice == "3": #delete a task by its number
+   if not tasks:
+     print("nothing to delete")
+   else:
+    for i, item in enumerate(tasks,1):
+      print(i, item) 
+    num = int(input("Which number do you want to delete?: "))
+    if 1 <= num <= len(tasks):
+     deleted_tasks = tasks.pop(num-1)
+     print("deleted: ", deleted_tasks)
+
+ elif choice == "4": # exiting and stopping the infinite loop
+  print("exit")
+  break
+
+ else: # in case of entering other number at the choose your action part
+  print("The selected action is invalid. Please select from the menu.")
